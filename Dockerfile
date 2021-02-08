@@ -31,6 +31,9 @@ ENV PATH="$virtual_env/bin:$PATH"
 # RUN apt-get install -y iputils-ping
 
 
+## upgrade pip ##
+RUN pip3 install --upgrade pip
+
 ## install python package ##
 RUN pip3 install -r requirements.txt
 
