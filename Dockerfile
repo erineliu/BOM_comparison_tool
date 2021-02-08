@@ -29,7 +29,7 @@ ENV PATH="$virtual_env/bin:$PATH"
 # RUN apt-get -y install gcc
 # RUN apt-get -y install libev-dev
 # RUN apt-get install -y iputils-ping
-RUN yum install python36-devel
+RUN yum install python36-devel -y
 
 ## upgrade pip ##
 RUN pip3 install --upgrade pip
