@@ -1,7 +1,6 @@
 ## set base image ##
-FROM centos/python-36-centos7:latest
+FROM python:3.6.8-slim-stretch
 
-USER root
 
 ## set env var ##
 ENV work_dir=/BOM_comparison_tool
@@ -13,7 +12,7 @@ ENV virtual_env=$work_dir/venv01
 
 
 ## create venv environment ##
-RUN python3 -m venv --without-pip $virtual_env
+RUN python3 -m venv $virtual_env
 
 
 ## copy current files to WebTester ##
@@ -25,13 +24,15 @@ ENV PATH="$virtual_env/bin:$PATH"
 
 
 ## install gcc libev-dev ##
-# RUN apt-get update
-# RUN apt-get -y install gcc
-# RUN apt-get -y install libev-dev
-# RUN apt-get install -y iputils-ping
+RUN apt-get update
+RUN apt-get -y install gcc
+RUN apt-get -y install libev-dev
+RUN apt-get install -y iputils-ping
 
 
 ## install python package ##
 RUN pip3 install -r requirements.txt
 
 #CMD ["bash"]
+
+
